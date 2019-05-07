@@ -1,6 +1,6 @@
-// Runtime: 12 ms, faster than 100.00% of Go.
-// Memory Usage: 5.2 MB, less than 49.56% of Go.
-// https://leetcode.com/submissions/detail/227401978/
+// Runtime: 8 ms, faster than 100.00% of Go.
+// Memory Usage: 5.2 MB, less than 42.48% of Go.
+// https://leetcode.com/submissions/detail/227405497/
 
 package main
 
@@ -9,11 +9,9 @@ import (
 )
 
 func isPalindrome(x int) bool {
-	input := strconv.Itoa(x)
-    fullLen := len(input) - 1
-    halfLen := fullLen // 2
+    input := strconv.Itoa(x)
 
-    for i := 0; i < halfLen; i += 1 {
+    for i, fullLen := 0, len(input) - 1; i < fullLen; i += 1 {
         if input[i] != input[fullLen - i] {
             return false
         }
