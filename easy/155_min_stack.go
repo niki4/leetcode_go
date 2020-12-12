@@ -57,23 +57,3 @@ func minIntIdx(nums []int) int {
 	}
 	return minIdx
 }
-
-func main() {
-	obj := Constructor()
-	obj.Push(-2)
-	obj.Push(0)
-	obj.Push(-3)
-
-	if x := obj.GetMin(); x != -3 {
-		fmt.Println("Test fail! Expected", -3, "got", x)
-	}
-
-	obj.Pop()
-
-	if x := obj.Top(); x != 0 {
-		fmt.Println("Test fail! Expected", 0, "got", x)
-	}
-	if x := obj.GetMin(); x != -2 {
-		fmt.Println("Test fail! Expected", -2, "got", x)
-	}
-}
