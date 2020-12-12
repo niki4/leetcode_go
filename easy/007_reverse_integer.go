@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math"
 	"strconv"
 )
@@ -44,20 +43,4 @@ func reverse(x int) int {
 		return -res
 	}
 	return res
-}
-
-func main() {
-	tc := map[int]int{
-		123:        321,
-		-123:       -321,
-		120:        21,
-		0:          0,
-		1534236469: 0,
-	}
-	for input, expected := range tc {
-		sRes := reverse(input)
-		if sRes != expected {
-			fmt.Printf("For Input %d - Expected %d, Got %d\n", input, expected, sRes)
-		}
-	}
 }
