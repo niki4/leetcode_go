@@ -48,6 +48,9 @@ func lengthOfLongestSubstring2(s string) int {
 		if _, exist := set[str[j]]; !exist {
 			set[str[j]] = struct{}{}
 			j++
+			if j-i > ans {
+				ans = j - i
+			}
 		} else {
 			delete(set, str[i])
 			i++
