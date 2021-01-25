@@ -13,10 +13,24 @@ var countPrimesTestCases = []struct {
 	{10000, 1229},
 }
 
+var countPrimesSolutions = []struct {
+	fnName string
+	fnObj  func(n int) (pCounter int)
+}{
+	{"countPrimesSieveOfEratosthenes", countPrimes},
+	{"countPrimesMathBig", countPrimesMathBig},
+}
+
 func TestCountPrimes(t *testing.T) {
-	for _, tc := range countPrimesTestCases {
-		if res := countPrimes(tc.num); res != tc.count {
-			t.Errorf("for input num %d expected %d, got %d", tc.num, tc.count, res)
+	for _, sol := range countPrimesSolutions {
+		for _, tc := range countPrimesTestCases {
+			t.Run(
+				sol.fnName,
+				func(t *testing.T) {
+					if res := sol.fnObj(tc.num); res != tc.count {
+						t.Errorf("for input num %d expected %d, got %d", tc.num, tc.count, res)
+					}
+				})
 		}
 	}
 }
