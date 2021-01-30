@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 )
 
 // Definition for singly-linked list.
@@ -12,38 +10,23 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func sliceIntToInt(nums []int) int {
-	numStr := strings.Trim(strings.Join(
-		strings.Fields(
-			fmt.Sprint(nums)), ""), "[]")
-	numInt, _ := strconv.Atoi(numStr)
-	return numInt
-}
-
+// Runtime: 8 ms, faster than 89.57% of Go
+// Memory Usage: 5 MB, less than 20.20% of Go
+// Time complexity: O(n)
+// Space complexity: O(n) where n - max(len(l1), len(l2))
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	var num1 []int
-	var num2 []int
-	for l1 != nil {
-		num1 = append([]int{l1.Val}, num1...) // make reversed num
-		l1 = l1.Next
-	}
-	for l2 != nil {
-		num2 = append([]int{l2.Val}, num2...)
-		l2 = l2.Next
-	}
-	sum := strconv.Itoa(sliceIntToInt(num1) + sliceIntToInt(num2))
-
-	// create resulting linked list
-	dummyNode := new(ListNode)
-	prev := dummyNode
-	for i := len(sum) - 1; i >= 0; i-- {
-		n, _ := strconv.Atoi(string(sum[i]))
-		fmt.Printf("n: %d (%[1]T)\n", n)
-		node := &ListNode{
-			Val: n,
+	dummyNode, sum := new(ListNode), 0
+	for cur := dummyNode; l1 != nil || l2 != nil || sum != 0; cur = cur.Next {
+		if l1 != nil {
+			sum += l1.Val
+			l1 = l1.Next
 		}
-		prev.Next = node
-		prev = node
+		if l2 != nil {
+			sum += l2.Val
+			l2 = l2.Next
+		}
+		cur.Next = &ListNode{Val: sum % 10}
+		sum /= 10
 	}
 	return dummyNode.Next
 }
