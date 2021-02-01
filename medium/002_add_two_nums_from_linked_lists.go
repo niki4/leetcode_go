@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 // Definition for singly-linked list.
 type ListNode struct {
 	Val  int
@@ -29,25 +25,4 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		sum /= 10
 	}
 	return dummyNode.Next
-}
-
-func main() {
-	l1 := &ListNode{Val: 2}
-	l1.Next = &ListNode{Val: 4}
-	l1.Next.Next = &ListNode{Val: 3}
-	fmt.Printf("%#v\n", l1)
-	fmt.Printf("%#v\n", l1.Next)
-	fmt.Printf("%#v\n\n", l1.Next.Next)
-
-	l2 := &ListNode{Val: 5}
-	l2.Next = &ListNode{Val: 6}
-	l2.Next.Next = &ListNode{Val: 4}
-	fmt.Printf("%#v\n", l2)
-	fmt.Printf("%#v\n", l2.Next)
-	fmt.Printf("%#v\n\n", l2.Next.Next)
-
-	res := addTwoNumbers(l1, l2)
-	fmt.Printf("%#v\n", res)           // 7
-	fmt.Printf("%#v\n", res.Next)      // 0
-	fmt.Printf("%#v\n", res.Next.Next) // 8
 }
