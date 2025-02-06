@@ -22,6 +22,8 @@ import (
 	"math"
 )
 
+// Dynamic programming
+// Complexity: O(n) & Space O(1)
 func maxProfit(prices []int) int {
 	maxProfitN := 0
 	minPrice := math.MaxInt32
