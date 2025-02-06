@@ -52,3 +52,34 @@ func findDuplicate2(nums []int) int {
 	// Return a default value if no duplicate is found
 	return -1
 }
+
+// Slow and fast pointer approach (aka Tortoise and Hare).
+// Time complexity: O(n); Space complexity: O(1)
+// Runtime 4 ms Beats 72.38%; Memory 10.11 MB Beats 51.22%
+func findDuplicate(nums []int) int {
+    // Phase 1: Finding the intersection point of the two runners.
+	// Both tortoise and hare start at the first element.
+	// tortoise moves one step at a time, while hare moves two steps at a time.
+	// The loop continues until they meet inside the cycle, which confirms a duplicate exists.
+    tortoise := nums[0]
+    hare := nums[0]
+    for {
+        tortoise = nums[tortoise]
+        hare = nums[nums[hare]]
+        if tortoise == hare {
+            break
+        }
+    }
+
+    // Phase 2: Finding the entrance to the cycle (duplicate)
+	// Reset tortoise to the start of the array.
+	// Move both tortoise and hare one step at a time.
+	// The point at which they meet again is the duplicate number.
+    tortoise = nums[0]
+    for tortoise != hare {
+        tortoise = nums[tortoise]
+        hare = nums[hare]
+    }
+
+    return hare
+}
