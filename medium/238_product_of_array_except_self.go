@@ -57,7 +57,6 @@ func productExceptSelf(nums []int) []int {
 	rightProd := 1
 	for i := len(nums) - 1; i >= 0; i-- {
 		// while calc product from right side, we define product without current num
-		fmt.Println("rightProd:", rightProd, "nums[i]:", nums[i])
 		result[i] *= rightProd
 		rightProd *= nums[i]
 	}
