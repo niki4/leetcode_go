@@ -18,6 +18,8 @@ Input: nums = [3,3,3,3,3]
 Output: 3
 **/
 
+package main
+
 // Time complexity: O(n); Space complexity: O(n) because of memoizing past nums
 func findDuplicate(nums []int) int {
     seen := make(map[int]struct{})
@@ -56,7 +58,7 @@ func findDuplicate2(nums []int) int {
 // Slow and fast pointer approach (aka Tortoise and Hare).
 // Time complexity: O(n); Space complexity: O(1)
 // Runtime 4 ms Beats 72.38%; Memory 10.11 MB Beats 51.22%
-func findDuplicate(nums []int) int {
+func findDuplicate3(nums []int) int {
     // Phase 1: Finding the intersection point of the two runners.
 	// Both tortoise and hare start at the first element.
 	// tortoise moves one step at a time, while hare moves two steps at a time.
