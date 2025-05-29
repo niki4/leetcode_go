@@ -85,3 +85,25 @@ func findDuplicate3(nums []int) int {
 
     return hare
 }
+
+// Slightly shorter version of findDuplicate3
+func findDuplicate4(nums []int) int {
+    tortoise, hare := nums[0], nums[0]
+
+    for {
+        tortoise = nums[tortoise]
+        hare = nums[nums[hare]] // two jumps at a time
+
+        // First phase: found intersection
+        if tortoise == hare {
+            // Second phase: Reset tortoise, let hare continue
+            tortoise = nums[0]
+
+            for tortoise != hare {
+                tortoise = nums[tortoise]
+                hare = nums[hare]  // nb! one jump at a time
+            }
+            return tortoise // found duplicate
+        }
+    }
+}
