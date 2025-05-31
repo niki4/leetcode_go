@@ -13,21 +13,20 @@ package main
 import "fmt"
 
 /**
- * Definition for singly-linked list.
+* Definition for singly-linked list.
+* type ListNode struct {
+* 	Val  int
+* 	Next *ListNode
+* }
  */
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
 func reverseList(head *ListNode) *ListNode {
 	if head == nil {
 		return head
 	}
 
-	var prev *ListNode = head
-	var curr *ListNode = head.Next
-	head.Next = nil
+	var prev *ListNode
+	var curr *ListNode = head
 
 	for curr != nil {
 		temp := curr.Next
