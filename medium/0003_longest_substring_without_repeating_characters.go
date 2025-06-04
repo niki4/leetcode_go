@@ -58,3 +58,22 @@ func lengthOfLongestSubstring2(s string) int {
 	}
 	return ans
 }
+
+// Sliding window approach
+// Time complexity: O(n)
+// Space complexity: O(min(m, n))
+func lengthOfLongestSubstring3(s string) int {
+	seen := map[rune]int{} // mapping char to index it was seen
+	i := 0                 // left pointer of sliding window
+	maxLength := 0
+
+	for j, char := range s {
+		if index, ok := seen[char]; ok && index >= i {
+			// found duplicate, shift left pointer to shrink the sliding window
+			i = index + 1
+		}
+		seen[char] = j // remember current char position
+		maxLength = max(maxLength, j-i+1)
+	}
+	return maxLength
+}

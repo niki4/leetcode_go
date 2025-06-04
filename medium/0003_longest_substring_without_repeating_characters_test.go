@@ -8,6 +8,7 @@ var lengthOfLongestSubstringSolutions = []struct {
 }{
 	{"lengthOfLongestSubstring", lengthOfLongestSubstring},
 	{"lengthOfLongestSubstring2", lengthOfLongestSubstring2},
+	{"lengthOfLongestSubstring3", lengthOfLongestSubstring3},
 }
 
 var lengthOfLongestSubstringTestCases = []struct {
