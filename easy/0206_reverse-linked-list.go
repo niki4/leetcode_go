@@ -68,10 +68,10 @@ func printLinkedList(head *ListNode) {
 	fmt.Println("")
 }
 
-func main() {
-	inp := []int{1, 2, 3, 4, 5}
-	head := createLinkedList(inp)
-	printLinkedList(head)
-	newHead := reverseList(head)
-	printLinkedList(newHead)
-}
+// func main() {
+// 	inp := []int{1, 2, 3, 4, 5}
+// 	head := createLinkedList(inp)
+// 	printLinkedList(head)
+// 	newHead := reverseList(head)
+// 	printLinkedList(newHead)
+// }
