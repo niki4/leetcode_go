@@ -1,4 +1,8 @@
-package main
+package easy
+
+import (
+	. "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
+)
 
 // Runtime: 0 ms, faster than 100.00% of Go
 // Memory Usage: 3.1 MB, less than 100.00% of Go

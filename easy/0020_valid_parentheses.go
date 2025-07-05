@@ -6,7 +6,7 @@ Open brackets must be closed by the same type of brackets.
 Open brackets must be closed in the correct order.
 */
 
-package main
+package easy
 
 func IsValidParenthesesSolution1(s string) bool {
 	return isValid1(s)
@@ -41,20 +41,20 @@ func isValid1(s string) bool {
 // A bit more concise version than `isValid1`
 // Time/Space complexity: O(n)
 func isValid(s string) bool {
-    stack := []rune{} // to keep the unclosed parentheses
-    pairs := map[rune]rune{')': '(', '}': '{', ']': '['}
+	stack := []rune{} // to keep the unclosed parentheses
+	pairs := map[rune]rune{')': '(', '}': '{', ']': '['}
 
-    for _, ch := range s {
-        if ch == '(' || ch == '[' || ch == '{' {
-            stack = append(stack, ch)
-        } else {  // if closing bracket, remove the opening one if valid
-            if len(stack) == 0 || stack[len(stack)-1] != pairs[ch] {
-                return false
-            }
-            stack = stack[:len(stack)-1]
-        }
-    }
+	for _, ch := range s {
+		if ch == '(' || ch == '[' || ch == '{' {
+			stack = append(stack, ch)
+		} else { // if closing bracket, remove the opening one if valid
+			if len(stack) == 0 || stack[len(stack)-1] != pairs[ch] {
+				return false
+			}
+			stack = stack[:len(stack)-1]
+		}
+	}
 
-    // if there's nothing in stack, string is balanced
-    return len(stack) == 0
+	// if there's nothing in stack, string is balanced
+	return len(stack) == 0
 }

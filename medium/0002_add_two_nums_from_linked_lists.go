@@ -1,10 +1,8 @@
-package main
+package medium
 
-// Definition for singly-linked list.
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import (
+	. "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
+)
 
 // Runtime: 8 ms, faster than 89.57% of Go
 // Memory Usage: 5 MB, less than 20.20% of Go

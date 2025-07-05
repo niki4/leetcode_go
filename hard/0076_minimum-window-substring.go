@@ -30,7 +30,7 @@ Constraints:
 Follow up: Could you find an algorithm that runs in O(m + n) time?
 */
 
-package main
+package hard
 
 // Sliding Window
 // The idea is to compare frequencies of chars between t and window while expanding/shrinking the window.

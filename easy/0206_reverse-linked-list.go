@@ -8,17 +8,13 @@ Output: [5,4,3,2,1]
 
 */
 
-package main
+package easy
 
-import "fmt"
+import (
+	"fmt"
 
-/**
-* Definition for singly-linked list.
-* type ListNode struct {
-* 	Val  int
-* 	Next *ListNode
-* }
- */
+	. "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
+)
 
 func reverseList(head *ListNode) *ListNode {
 	if head == nil {

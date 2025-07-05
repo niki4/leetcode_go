@@ -17,7 +17,7 @@ Constraints:
 	strs[i] consists of only lowercase English letters if it is non-empty.
 */
 
-package main
+package easy
 
 // Time complexity: O(n * m^2)
 // where n is the number of strings in the input array strs

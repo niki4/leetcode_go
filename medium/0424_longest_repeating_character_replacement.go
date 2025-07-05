@@ -25,7 +25,7 @@ s consists of only uppercase English letters.
 
 // https://leetcode.com/problems/longest-repeating-character-replacement/
 
-package main
+package medium
 
 // Sliding window
 // Time complexity: O(n)

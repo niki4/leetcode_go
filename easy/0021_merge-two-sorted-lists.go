@@ -22,15 +22,11 @@ Constraints:
 	Both list1 and list2 are sorted in non-decreasing order.
 */
 
-package main
+package easy
 
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
+import (
+	. "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
+)
 
 // Two pointer approach
 // Time/Space complexity: O(n + m)

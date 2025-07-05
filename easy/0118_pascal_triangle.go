@@ -14,7 +14,7 @@ Output:
 ]
 */
 
-package main
+package easy
 
 // Runtime: 0 ms, faster than 100.00% of Go
 // Memory Usage: 2 MB, less than 16.23% of Go

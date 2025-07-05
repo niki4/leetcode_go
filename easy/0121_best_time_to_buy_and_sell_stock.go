@@ -15,7 +15,7 @@ Output: 0
 Explanation: In this case, no transactions are done and the max profit = 0.
 **/
 
-package main
+package easy
 
 import (
 	"fmt"

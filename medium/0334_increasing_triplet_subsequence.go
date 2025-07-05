@@ -13,7 +13,7 @@ Output: false
 Explanation: No triplet exists.
 */
 
-package main
+package medium
 
 import "math"
 

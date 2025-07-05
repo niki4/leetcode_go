@@ -2,7 +2,7 @@
 // Memory Usage: 8.5 MB, less than 30.00% of Go.
 // https://leetcode.com/submissions/detail/227397350/
 
-package main
+package easy
 
 import (
 	"fmt"

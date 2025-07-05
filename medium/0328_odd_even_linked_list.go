@@ -1,4 +1,4 @@
-package main
+package medium
 
 /*
 Given a singly linked list, group all odd nodes together followed by the even nodes.
@@ -20,10 +20,15 @@ The first node is considered odd, the second node even and so on ...
 The length of the linked list is between [0, 10^4].
 */
 
+import (
+	. "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
+)
+
 // Runtime: 4 ms, faster than 86.67% of Go
 // Memory Usage: 3.3 MB, less than 100.00% of Go
-//    Time complexity: O(n)
-//    Space complexity: O(1)
+//
+//	Time complexity: O(n)
+//	Space complexity: O(1)
 func oddEvenList(head *ListNode) *ListNode {
 	if head == nil {
 		return head

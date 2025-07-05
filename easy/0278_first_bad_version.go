@@ -23,7 +23,7 @@ Input: n = 1, bad = 1
 Output: 1
 */
 
-package main
+package easy
 
 /**
  * Forward declaration of isBadVersion API.

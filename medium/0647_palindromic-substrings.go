@@ -18,7 +18,7 @@ Constraints:
 s consists of lowercase English letters.
 */
 
-package main
+package medium
 
 // Time complexity: O(n^2)
 func countSubstrings(s string) int {

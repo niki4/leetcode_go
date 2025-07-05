@@ -25,7 +25,7 @@ Constraints:
 	0 <= amount <= 104
 */
 
-package main
+package medium
 
 // Dynamic programming
 // Time Complexity: O(len(coins) * amount)

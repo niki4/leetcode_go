@@ -20,21 +20,20 @@ Follow up: If you have figured out the O(n) solution, try coding another solutio
 the divide and conquer approach, which is more subtle.
 */
 
-package main
+package medium
 
 // Greedy approach. O(n)
 // Keep track on local max (currSum) if its growing sequence or reset it if current num is larger.
 func maxSubArrayGreedy(nums []int) int {
-    if len(nums) == 1 {
-        return nums[0]
-    }
+	if len(nums) == 1 {
+		return nums[0]
+	}
 
-    currSum, maxSum := nums[0], nums[0]
-    for i := 1; i < len(nums); i++ {
-        currSum = max(nums[i], currSum+nums[i])
-        maxSum = max(currSum, maxSum)
-    }
+	currSum, maxSum := nums[0], nums[0]
+	for i := 1; i < len(nums); i++ {
+		currSum = max(nums[i], currSum+nums[i])
+		maxSum = max(currSum, maxSum)
+	}
 
-    return maxSum
+	return maxSum
 }
-

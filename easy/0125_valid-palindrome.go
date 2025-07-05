@@ -26,13 +26,13 @@ Constraints:
 s consists only of printable ASCII characters.
 */
 
-package main
+package easy
 
 import u "unicode"
 
 // Time complexity: O(n)
 // Space complexity: O(1)
-func isPalindrome(s string) bool {
+func isPalindrome_0125(s string) bool {  // original fn name "isPalindrome", added "_0125" to avoid clash with other module
 	left, right := 0, len(s)-1
 
 	for left < right {

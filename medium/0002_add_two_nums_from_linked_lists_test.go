@@ -1,8 +1,10 @@
-package main
+package medium
 
 import (
 	"reflect"
 	"testing"
+
+	. "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
 )
 
 var addTwoNumbersTestCases = []struct {

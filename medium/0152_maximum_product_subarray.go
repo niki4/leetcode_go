@@ -16,8 +16,8 @@ Constraints:
 1 <= nums.length <= 2 * 104
 -10 <= nums[i] <= 10
 The product of any subarray of nums is guaranteed to fit in a 32-bit integer.
- */
-package main
+*/
+package medium
 
 // Kadane's algorithm is used to find the maximum product subarray.
 // The algorithm keeps track of the maximum and minimum products at each position,

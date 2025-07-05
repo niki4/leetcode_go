@@ -5,7 +5,7 @@ But for multiples of three it should output “Fizz” instead of the number and
 For numbers which are multiples of both three and five output “FizzBuzz”.
 */
 
-package main
+package easy
 
 import "strconv"
 

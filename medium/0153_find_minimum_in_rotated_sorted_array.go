@@ -25,26 +25,26 @@ Explanation: The original array was [0,1,2,4,5,6,7] and it was rotated 4 times.
 Example 3:
 Input: nums = [11,13,15,17]
 Output: 11
-Explanation: The original array was [11,13,15,17] and it was rotated 4 times. 
+Explanation: The original array was [11,13,15,17] and it was rotated 4 times.
 */
 
-package main
+package medium
 
 // Binary Search
 // Time Complexity: O(log n)
 func findMin(nums []int) int {
-    left, right := 0, len(nums)-1
+	left, right := 0, len(nums)-1
 
-    for left < right {
-        mid := (left + right) / 2 // or "left + (right - left) / 2" for some languages
+	for left < right {
+		mid := (left + right) / 2 // or "left + (right - left) / 2" for some languages
 
-        if nums[mid] > nums[right] {  // min num in right part - go there
-            left = mid + 1
-        } else {  // case nums[mid] <= nums[right], min num in left part - go there
-            right = mid
-        }
-    }
+		if nums[mid] > nums[right] { // min num in right part - go there
+			left = mid + 1
+		} else { // case nums[mid] <= nums[right], min num in left part - go there
+			right = mid
+		}
+	}
 
-    // at this point we converged both ends at the same (minimum number) point
-    return nums[left]
+	// at this point we converged both ends at the same (minimum number) point
+	return nums[left]
 }

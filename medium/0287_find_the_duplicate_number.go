@@ -18,19 +18,19 @@ Input: nums = [3,3,3,3,3]
 Output: 3
 **/
 
-package main
+package medium
 
 // Time complexity: O(n); Space complexity: O(n) because of memoizing past nums
 func findDuplicate(nums []int) int {
-    seen := make(map[int]struct{})
+	seen := make(map[int]struct{})
 
-    for _, num := range nums {
-        if _, ok := seen[num]; ok {
-            return num
-        }
-        seen[num] = struct{}{}
-    }
-    return -1
+	for _, num := range nums {
+		if _, ok := seen[num]; ok {
+			return num
+		}
+		seen[num] = struct{}{}
+	}
+	return -1
 }
 
 // Time complexity: O(n); Space complexity: O(1)
@@ -46,9 +46,9 @@ func findDuplicate2(nums []int) int {
 		if ((bitMask >> n) & 1) != 0 {
 			return n
 		}
-    // If the number n was not previously seen, this line sets the nth bit in bitMask.
-    // It shifts 1 to the left by n positions (placing a 1 in the nth bit position) and then performs a bitwise OR operation with bitMask.
-    // This operation updates bitMask to mark the number n as seen.
+		// If the number n was not previously seen, this line sets the nth bit in bitMask.
+		// It shifts 1 to the left by n positions (placing a 1 in the nth bit position) and then performs a bitwise OR operation with bitMask.
+		// This operation updates bitMask to mark the number n as seen.
 		bitMask |= (1 << n)
 	}
 	// Return a default value if no duplicate is found
@@ -59,51 +59,51 @@ func findDuplicate2(nums []int) int {
 // Time complexity: O(n); Space complexity: O(1)
 // Runtime 4 ms Beats 72.38%; Memory 10.11 MB Beats 51.22%
 func findDuplicate3(nums []int) int {
-    // Phase 1: Finding the intersection point of the two runners.
+	// Phase 1: Finding the intersection point of the two runners.
 	// Both tortoise and hare start at the first element.
 	// tortoise moves one step at a time, while hare moves two steps at a time.
 	// The loop continues until they meet inside the cycle, which confirms a duplicate exists.
-    tortoise := nums[0]
-    hare := nums[0]
-    for {
-        tortoise = nums[tortoise]
-        hare = nums[nums[hare]]
-        if tortoise == hare {
-            break
-        }
-    }
+	tortoise := nums[0]
+	hare := nums[0]
+	for {
+		tortoise = nums[tortoise]
+		hare = nums[nums[hare]]
+		if tortoise == hare {
+			break
+		}
+	}
 
-    // Phase 2: Finding the entrance to the cycle (duplicate)
+	// Phase 2: Finding the entrance to the cycle (duplicate)
 	// Reset tortoise to the start of the array.
 	// Move both tortoise and hare one step at a time.
 	// The point at which they meet again is the duplicate number.
-    tortoise = nums[0]
-    for tortoise != hare {
-        tortoise = nums[tortoise]
-        hare = nums[hare]
-    }
+	tortoise = nums[0]
+	for tortoise != hare {
+		tortoise = nums[tortoise]
+		hare = nums[hare]
+	}
 
-    return hare
+	return hare
 }
 
 // Slightly shorter version of findDuplicate3
 func findDuplicate4(nums []int) int {
-    tortoise, hare := nums[0], nums[0]
+	tortoise, hare := nums[0], nums[0]
 
-    for {
-        tortoise = nums[tortoise]
-        hare = nums[nums[hare]] // two jumps at a time
+	for {
+		tortoise = nums[tortoise]
+		hare = nums[nums[hare]] // two jumps at a time
 
-        // First phase: found intersection
-        if tortoise == hare {
-            // Second phase: Reset tortoise, let hare continue
-            tortoise = nums[0]
+		// First phase: found intersection
+		if tortoise == hare {
+			// Second phase: Reset tortoise, let hare continue
+			tortoise = nums[0]
 
-            for tortoise != hare {
-                tortoise = nums[tortoise]
-                hare = nums[hare]  // nb! one jump at a time
-            }
-            return tortoise // found duplicate
-        }
-    }
+			for tortoise != hare {
+				tortoise = nums[tortoise]
+				hare = nums[hare] // nb! one jump at a time
+			}
+			return tortoise // found duplicate
+		}
+	}
 }

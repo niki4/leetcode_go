@@ -22,7 +22,7 @@ Constraints:
 	strs[i] consists of lowercase English letters.
 */
 
-package main
+package medium
 
 import "sort"
 

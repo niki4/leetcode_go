@@ -20,40 +20,40 @@ Input: nums = [1], target = 0
 Output: -1
 */
 
-package main
+package medium
 
 // Binary Search
 // Time Complexity: O(log n)
 func search(nums []int, target int) int {
-    left, right := 0, len(nums)-1
+	left, right := 0, len(nums)-1
 
-    for left <= right {
-        mid := (left + right) / 2
+	for left <= right {
+		mid := (left + right) / 2
 
-        if nums[mid] == target {
-            // we found it, yeah!
-            return mid
-        }
+		if nums[mid] == target {
+			// we found it, yeah!
+			return mid
+		}
 
-        // First we define in which sorted sequence we are, then define is there target.
-        if nums[left] <= nums[mid] {  // left sequence sorted
-            if nums[left] <= target && target <= nums[mid] {
-                // target in left sequence
-                right = mid - 1
-            } else {
-                // target in right sequence
-                left = mid + 1
-            }
-        } else {    // right sequence sorted
-            if nums[mid] <= target && target <= nums[right] {
-                // target in right sequence
-                left = mid + 1
-            } else {
-                // target in left sequence
-                right = mid - 1
-            }
-        }
-    }
+		// First we define in which sorted sequence we are, then define is there target.
+		if nums[left] <= nums[mid] { // left sequence sorted
+			if nums[left] <= target && target <= nums[mid] {
+				// target in left sequence
+				right = mid - 1
+			} else {
+				// target in right sequence
+				left = mid + 1
+			}
+		} else { // right sequence sorted
+			if nums[mid] <= target && target <= nums[right] {
+				// target in right sequence
+				left = mid + 1
+			} else {
+				// target in left sequence
+				right = mid - 1
+			}
+		}
+	}
 
-    return -1
+	return -1
 }

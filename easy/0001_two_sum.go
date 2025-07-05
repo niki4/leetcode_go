@@ -1,4 +1,4 @@
-package main
+package easy
 
 // Runtime: 36 ms, faster than 31.67% of Go online submissions for Two Sum.
 // Memory Usage: 3 MB, less than 100.00% of Go online submissions for Two Sum.
