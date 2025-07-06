@@ -6,7 +6,13 @@ import (
 	"testing"
 
 	. "github.com/niki4/leetcode_go/common/tools" //lint:ignore ST1001 dotted import
+	. "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
 )
+
+var mergeKListsSolutions = map[string]func(lists []*ListNode) *ListNode{
+	"mergeKLists": mergeKLists,
+	"mergeKLists2": mergeKLists2,
+}
 
 var mergeKListsTestCases = []struct {
 	input  [][]int
@@ -51,59 +57,66 @@ var mergeKListsTestCases = []struct {
 }
 
 func TestMergeKLists(t *testing.T) {
-	for i, tc := range mergeKListsTestCases {
-		t.Run(fmt.Sprintf("TestCase_%d", i+1), func(t *testing.T) {
-			lists := CreateSliceOfLinkedList(tc.input)
-			result := mergeKLists(lists)
+	for solutionName, solution := range mergeKListsSolutions {
+		for i, tc := range mergeKListsTestCases {
+			t.Run(fmt.Sprintf("TestCase_%d", i+1), func(t *testing.T) {
+				lists := CreateSliceOfLinkedList(tc.input)
+				result := solution(lists)
 
-			// Convert result back to array for comparison
-			resultArray := TraverseLinkedList(result)
+				// Convert result back to array for comparison
+				resultArray := TraverseLinkedList(result)
 
-			if !reflect.DeepEqual(resultArray, tc.output) {
-				t.Errorf("mergeKLists(%v) = %v, want %v", tc.input, resultArray, tc.output)
-			}
-		})
+				if !reflect.DeepEqual(resultArray, tc.output) {
+					t.Errorf("%s(%v) = %v, want %v", solutionName, tc.input, resultArray, tc.output)
+				}
+			})
+		}
 	}
 }
 
 // Test edge cases
 func TestMergeKListsEdgeCases(t *testing.T) {
-	t.Run("SingleList", func(t *testing.T) {
-		input := [][]int{{1, 2, 3, 4, 5}}
-		expected := []int{1, 2, 3, 4, 5}
 
-		lists := CreateSliceOfLinkedList(input)
-		result := mergeKLists(lists)
-		resultArray := TraverseLinkedList(result)
+	for solutionName, solution := range mergeKListsSolutions {
+		t.Run("SingleList", func(t *testing.T) {
+			input := [][]int{{1, 2, 3, 4, 5}}
+			expected := []int{1, 2, 3, 4, 5}
 
-		if !reflect.DeepEqual(resultArray, expected) {
-			t.Errorf("mergeKLists(%v) = %v, want %v", input, resultArray, expected)
-		}
-	})
+			lists := CreateSliceOfLinkedList(input)
+			result := solution(lists)
+			resultArray := TraverseLinkedList(result)
 
-	t.Run("AllEmptyLists", func(t *testing.T) {
-		input := [][]int{{}, {}, {}, {}}
-		expected := []int{}
+			if !reflect.DeepEqual(resultArray, expected) {
+				t.Errorf("%s(%v) = %v, want %v", solutionName, input, resultArray, expected)
+			}
+		})
 
-		lists := CreateSliceOfLinkedList(input)
-		result := mergeKLists(lists)
-		resultArray := TraverseLinkedList(result)
+		t.Run("AllEmptyLists", func(t *testing.T) {
+			input := [][]int{{}, {}, {}, {}}
+			expected := []int{}
 
-		if !reflect.DeepEqual(resultArray, expected) {
-			t.Errorf("mergeKLists(%v) = %v, want %v", input, resultArray, expected)
-		}
-	})
+			lists := CreateSliceOfLinkedList(input)
+			result := solution(lists)
+			resultArray := TraverseLinkedList(result)
 
-	t.Run("MixedEmptyAndNonEmpty", func(t *testing.T) {
-		input := [][]int{{}, {1, 2}, {}, {3, 4}, {}}
-		expected := []int{1, 2, 3, 4}
+			if !reflect.DeepEqual(resultArray, expected) {
+				t.Errorf("%s(%v) = %v, want %v", solutionName, input, resultArray, expected)
+			}
+		})
 
-		lists := CreateSliceOfLinkedList(input)
-		result := mergeKLists(lists)
-		resultArray := TraverseLinkedList(result)
+		t.Run("MixedEmptyAndNonEmpty", func(t *testing.T) {
+			input := [][]int{{}, {1, 2}, {}, {3, 4}, {}}
+			expected := []int{1, 2, 3, 4}
 
-		if !reflect.DeepEqual(resultArray, expected) {
-			t.Errorf("mergeKLists(%v) = %v, want %v", input, resultArray, expected)
-		}
-	})
+			lists := CreateSliceOfLinkedList(input)
+			result := solution(lists)
+			resultArray := TraverseLinkedList(result)
+
+			if !reflect.DeepEqual(resultArray, expected) {
+				t.Errorf("%s(%v) = %v, want %v", solutionName, input, resultArray, expected)
+			}
+		})
+
+	}
+
 }

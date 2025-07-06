@@ -41,6 +41,7 @@ import (
 	. "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
 )
 
+// Flatten, Sort, Rebuild
 // Time complexity: O(n log n)
 // Space complexity: O(n)
 // n is the total number of nodes in all lists
@@ -59,4 +60,22 @@ func mergeKLists(lists []*ListNode) *ListNode {
 
 	// return head of the new sorted flatten list
 	return preHead.Next
+}
+
+// Iterative Merging
+// Time Complexity: O(NlogK)
+// Space complexity: O(1) ignoring the output list, as it merges in place
+// N is the total number of nodes across all linked lists and K is the number of linked lists. 
+func mergeKLists2(lists []*ListNode) *ListNode {
+	if len(lists) == 0 {
+		return nil
+	}
+
+	for len(lists) > 1 {
+		mergedList := MergeTwoSortedLinkedLists(lists[0], lists[1])
+		lists = lists[2:]
+		lists = append(lists, mergedList)
+	}
+
+	return lists[0]
 }
