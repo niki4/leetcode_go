@@ -25,6 +25,7 @@ Constraints:
 package easy
 
 import (
+	. "github.com/niki4/leetcode_go/common/tools" //lint:ignore ST1001 dotted import
 	. "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
 )
 
@@ -66,4 +67,30 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 
 	// Return the head of the merged linked list.
 	return preHead.Next
+}
+
+// Merge in place. Recursive approach.
+// Time complexity: O(m+n)
+// Space complexity: O(m+n) because of recursion stack
+func mergeTwoLists2(list1 *ListNode, list2 *ListNode) *ListNode {
+	if list1 != nil && list2 != nil {
+		if list1.Val > list2.Val {
+			// swap to guarantee list1 always less or equal than list2
+			list1, list2 = list2, list1
+		}
+		list1.Next = mergeTwoLists2(list1.Next, list2)
+	}
+
+	// base cases for recursion
+	if list1 != nil {
+		return list1
+	}
+	return list2
+}
+
+// Merge in place. Iterative approach.
+// Time complexity: O(m+n)
+// Space complexity: O(1) as we don't use extra space, just relinking nodes in proper order
+func mergeTwoLists3(list1 *ListNode, list2 *ListNode) *ListNode {
+	return MergeTwoSortedLinkedLists(list1, list2)
 }

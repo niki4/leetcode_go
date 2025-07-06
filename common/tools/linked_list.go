@@ -48,3 +48,30 @@ func FlattenListValues(lists []*types.ListNode) []int {
 	}
 	return listsValues
 }
+
+// MergeTwoSortedLinkedLists merges two sorted linked lists in place and returns head of new resulted list
+func MergeTwoSortedLinkedLists(list1 *types.ListNode, list2 *types.ListNode) *types.ListNode {
+	preHead := &types.ListNode{}
+	curr := preHead
+
+	// relink (merge in place) nodes as you traverse both lists
+	for list1 != nil && list2 != nil {
+		if list1.Val < list2.Val {
+			curr.Next = list1
+			list1 = list1.Next
+		} else {
+			curr.Next = list2
+			list2 = list2.Next
+		}
+		curr = curr.Next
+	}
+
+	// if there something left in either list, just attach it as it's alredy sorted
+	if list1 != nil {
+		curr.Next = list1
+	} else {
+		curr.Next = list2
+	}
+
+	return preHead.Next
+}
