@@ -20,6 +20,10 @@ The number of nodes in the list is in the range [1, 5 * 104].
 1 <= Node.val <= 1000
 */
 
+package medium
+
+import . "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
+
 func findMidPoint(head *ListNode) *ListNode {
 	slow, fast := head, head
 	for fast != nil && fast.Next != nil {
