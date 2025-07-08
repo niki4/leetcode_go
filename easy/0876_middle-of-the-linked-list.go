@@ -18,6 +18,10 @@ The number of nodes in the list is in the range [1, 100].
 1 <= Node.val <= 100
 */
 
+package easy
+
+import . "github.com/niki4/leetcode_go/common/types" //lint:ignore ST1001 dotted import
+
 // Two-pointers approach (tortoise & hare)
 // Time complexity: O(n)
 // Space complexity: O(1)
