@@ -48,3 +48,57 @@ func setZeroes(matrix [][]int)  {
         }
     }
 }
+
+// Time complexity: O(m*n)
+// Space complexity: O(1) - no extra space, use the input array itself for tracking
+func setZeroes2(matrix [][]int)  {
+    zeroCol, zeroRow := false, false
+    m, n := len(matrix), len(matrix[0])
+
+    // First define if there zeroes at first row and column.
+    // We need this to don't mess later with other cells.
+    for i := 0; i < m; i++ {
+        if matrix[i][0] == 0 {
+            zeroCol = true
+            break
+        }
+    }
+    for j := 0; j < n; j++ {
+        if matrix[0][j] == 0 {
+            zeroRow = true
+            break
+        }
+    }
+
+    // Check for zeroes the rest of matrix using first row and column as
+    // a tracking storage.
+    for i := 1; i < m; i++ {
+        for j := 1; j < n; j++ {
+            if matrix[i][j] == 0 {
+                matrix[i][0] = 0
+                matrix[0][j] = 0
+            }
+        }
+    }
+
+    // Then using 'tracking storage' fill relevant rows/columns with zeroes
+    for i := 1; i < m; i++ {
+        for j := 1; j < n; j++ {
+            if matrix[i][0] == 0 || matrix[0][j] == 0 {
+                matrix[i][j] = 0
+            }
+        }
+    }
+
+    // Finally, process first row/column itself separately
+    if zeroRow {
+        for j := 0; j < n; j++ {
+            matrix[0][j] = 0
+        }
+    }
+    if zeroCol {
+        for i := 0; i < m; i++ {
+            matrix[i][0] = 0
+        }
+    }
+}
