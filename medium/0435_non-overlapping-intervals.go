@@ -36,7 +36,7 @@ func eraseOverlapIntervals(intervals [][]int) int {
       func(a, b int) bool { return intervals[a][1] < intervals[b][1] })
 
     overlaps := 0
-    right := interval[0][1]
+    right := intervals[0][1]
   
     for i := 1; i < len(intervals); i++ {
       if intervals[i][0] < right {  // found overlap
