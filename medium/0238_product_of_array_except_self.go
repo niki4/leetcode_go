@@ -64,6 +64,27 @@ func productExceptSelf(nums []int) []int {
 	return result
 }
 
+// Another implementation of the same logic
+// Time complexity: O(n)
+// Space complexity: O(1) - output array does not count as extra space as per problem description.
+func productExceptSelf2(nums []int) []int {
+    result := make([]int, len(nums))
+
+    prefix := 1
+    for i := 0; i < len(nums); i++ {
+        result[i] = prefix  // first store prefix value
+        prefix *= nums[i]
+    }
+
+    postfix := 1
+    for j := len(nums)-1; j >= 0; j-- {
+        result[j] *= postfix // here we multiply both prefix and postfix (so product of numbers before and after current number)
+        postfix *= nums[j]
+    }
+
+    return result
+}
+
 func main() {
 	testCases := []testCase{
 		testCase{input: []int{1, 2, 3, 4}, output: []int{24, 12, 8, 6}},
